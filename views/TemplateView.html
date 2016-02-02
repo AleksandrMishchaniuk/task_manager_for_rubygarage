@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Template Notes.RubyGarage</title>
+        <script src="../js/jquery-2.1.4.min.js"></script>
+        <!--<script src="/js/ajax.js"></script>-->
+        <script src="../js/main-functions.js"></script>
+        <script src="../js/handlers.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            
+            <div id="div-login">
+                <form id="form-login" method="POST">
+                    <input type="text" name="login" placeholder="Login" required/><br/>
+                    <input type="password" name="pass" placeholder="Password" required/><br/>
+                    <input type="submit" value="Sing In"/>
+                </form>
+                <a href="#" id="btn_to_reg">Registration</a>
+                <script>
+                    $().ready(function(){
+                        $('#btn_to_reg').click(function(){
+                            divShow('div_reg');
+                        });
+                    });
+                </script>
+            </div>
+            
+            
+            <div id="div-reg">
+                <form id="form-reg" method="POST">
+                    <input type="text" name="login" placeholder="Login" required/><br/>
+                    <input type="email" name="email" placeholder="E-mail" required/><br/>
+                    <input type="password" name="pass1" placeholder="Password" required/><br/>
+                    <input type="password" name="pass2" placeholder="Password again" required/><br/>
+                    <input type="submit" value="Registration"/>
+                </form>
+                <a href="#" id="btn_to_singin">Back to sing in</a>
+                <script>
+                    $().ready(function(){
+                        $('#btn_to_singin').click(function(){
+                            divShow('div_singin');
+                        });
+                    });
+                </script>
+            </div>
+            
+            
+            <div id="div-projects">
+                
+            </div>
+            
+            
+        </div>
+<!--        <script>
+            $().ready(function(){
+                $.post("/start/", {}, startLoad);
+            });
+        </script>-->
+    </body>
+</html>
