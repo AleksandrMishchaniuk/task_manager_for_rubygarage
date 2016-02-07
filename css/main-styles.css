@@ -1,0 +1,22 @@
+.proj_btns, .task_btns{
+    float: right;
+}
+.proj_btns > div, .task_btns > div{
+    float: left;
+    padding: 2px;
+    cursor: pointer;
+}
+.project{
+    max-width: 800px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 5px;
+}
+.task{
+    min-height: 30px;
+    overflow: hidden;
+}
+.task_status{
+    float: left;
+}

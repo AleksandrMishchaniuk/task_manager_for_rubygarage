@@ -31,3 +31,19 @@ function msgShow(selector, msg, time){
         });
     }, time);
 }
+
+function getData(data){
+    if(data === 'false'){
+        $('#div_projects').empty();
+        divShow('#div_login');
+    }
+    return JSON.parse(data);
+}
+
+function getIndexById(id, arr){
+    for(var i=0; i<arr.length; i++){
+        if(arr[i]['id'] == id){
+            return i;
+        }
+    }
+}

@@ -6,10 +6,12 @@ function divLoad(div_id){
 }
 
 function ajaxAction(action_name, path, obj){
-    var arr = $(obj).serializeArray();
     var params = {};
-    for(var i=0; i<arr.length; i++){
-        params[arr[i].name] = arr[i].value;
+    if(obj){
+        var arr = $(obj).serializeArray();
+        for(var i=0; i<arr.length; i++){
+            params[arr[i].name] = arr[i].value;
+        }
     }
     $.post(path, params, 
             function(data){

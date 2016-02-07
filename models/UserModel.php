@@ -26,6 +26,19 @@ class UserModel {
         return FALSE;
     }
     
+    public static function getLoginById($id){
+        $db = dbConection::get();
+        $query = "SELECT `login` FROM `users`".
+                " WHERE `id`=:id";
+        $sth = $db->prepare($query);
+        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+        if($row = $sth->fetch(PDO::FETCH_ASSOC)){
+            return $row['login'];
+        }
+        return FALSE;
+    }
+    
     /**
      * 
      * @param type $log

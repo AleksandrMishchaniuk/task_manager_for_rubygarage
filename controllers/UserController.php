@@ -18,7 +18,8 @@ class UserController {
         $pass_entered = '';
         $answer = array(
             'ok' => 0,
-            'msg' => array()
+            'msg' => array(),
+            'data' => array()
         );
         
         if(     isset($_POST['login']) &&
@@ -39,6 +40,7 @@ class UserController {
             $pass_gotten = UserModel::getPasswordByLogin($login);
             if(password_verify($pass_entered, $pass_gotten)){
                 $_SESSION['user'] = UserModel::getIdByLogin($login);
+                $answer['data']['login'] = $login;
                 $answer['ok'] = 1;
                 $answer['msg'][] = "you singin as $login";
                 $answer['msg'][] = "your id is {$_SESSION['user']}";
@@ -51,6 +53,33 @@ class UserController {
         return true;
     }
     
+    public function actionGetLogin(){
+        $user_id = UserModel::checkLogged();
+        if(!$user_id){
+            echo 'false';
+            exit();
+        }
+        $answer = array(
+            'ok' => 0,
+            'data' => array()
+        );
+        $answer['data']['login'] = UserModel::getLoginById($user_id);
+        if($answer['data']['login']){
+            $answer['ok'] = 1;
+        }
+        echo (json_encode($answer));
+        return TRUE;
+    }
+    
+    /**
+     * 
+     */
+    public function actionLogout(){
+        unset($_SESSION['user']);
+        echo '1';
+        return TRUE;
+    }
+
     /**
      * 
      * @return boolean

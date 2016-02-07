@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Notes.RubyGarage</title>
+        <link rel="stylesheet" href="/css/main-styles.css"/>
         <script src="/js/jquery-2.1.4.min.js"></script>
         <script src="/js/ajax.js"></script>
         <script src="/js/main-functions.js"></script>
-        <script src="/js/handlers.js"></script>
         <script src="/js/actions.js"></script>
     </head>
     <body>
