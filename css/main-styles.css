@@ -1,22 +1,91 @@
+body{
+    background: burlywood;
+}
+/*------------------------------*/
+/*--- ICON ----------*/
+/*------------------------------*/
+.fa-plus{
+    text-shadow: 0px 1.5px 1px gray, 0px -1px 1.5px black;
+    vertical-align: middle;
+}
+
+/*------------------------------*/
+/*-----PROJECTS---------------*/
+/*------------------------------*/
+.project{
+    background: white;
+    max-width: 800px;
+    border: 1px solid silver;
+    border-radius: 15px;
+    margin: 20px auto;
+    /*padding: 5px;*/
+}
+.proj_caption{
+    background: linear-gradient(to top, #3861A0, #4A81BB);
+    color: white;
+    border-radius: 1px;
+    padding: 15px 5px;
+    
+}
+
+/*------------------------------*/
+/*-----TASKS---------------*/
+/*------------------------------*/
+.task{
+    min-height: 30px;
+    overflow: hidden;
+    border-top: 1px solid silver;
+}
+.task_status{
+    float: left;
+}
+
+/*------------------------------*/
+/*-----SMALL BUTTONS---------------*/
+/*------------------------------*/
 .proj_btns, .task_btns{
     float: right;
+}
+.task_btns .fa, .proj_btns .fa{
+    color: silver;
+}
+.task_btns .fa:hover{
+    color: black;
+}
+.proj_btns .fa:hover{
+    color: white;
 }
 .proj_btns > div, .task_btns > div{
     float: left;
     padding: 2px;
     cursor: pointer;
 }
-.project{
-    max-width: 800px;
-    border: 1px solid brown;
-    border-radius: 5px;
-    margin: 20px;
-    padding: 5px;
+.proj_btns > div{
+    padding: 0 10px;
 }
-.task{
-    min-height: 30px;
-    overflow: hidden;
+.proj_btns > div:nth-child(n+2){
+    border-left: 2px solid #4A81BB;
 }
-.task_status{
-    float: left;
+
+/*------------------------------*/
+/*-----BUTTON CREATE TODO LIST---------------*/
+/*------------------------------*/
+form.proj_create{
+    text-align: center;
+}
+form.proj_create > button{
+    background: linear-gradient(to top, #3861A0, #4A81BB);
+    height: 50px; 
+    font-size: 14pt; 
+    font-weight: bold;
+}
+form.proj_create > button:hover{
+    background: linear-gradient(to top, #3861A0, #4A81BB);
+    -webkit-filter: brightness(0.9) contrast(1.1);
+}
+form.proj_create > button > .fa-plus{
+    color: #334A6F
+}
+form.proj_create > button > span{
+    margin: 5px 10px;
 }

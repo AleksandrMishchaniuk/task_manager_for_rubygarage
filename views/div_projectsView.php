@@ -2,7 +2,7 @@
 <script src="js/constructors.js"></script>
 
 <h1>Hi, <span class="user_login"></span>!!!</h1>
-<a href="#" id="btn_logout">Quit</a>
+<a href="#" id="btn_logout" class="btn">Quit</a>
 
 <div id="tmp" class="project" style="display: none" data-proj_id="">
     <!---------------------------------------------------------------------------------------->
@@ -14,8 +14,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="proj_index">
                 <div class="proj_btns">
-                    <div class="btn_proj_edit">edit</div>
-                    <div class="btn_proj_del">del</div>
+                    <div class="btn_proj_edit"><i class="fa fa-pencil fa-lg"></i></div>
+                    <div class="btn_proj_del"><i class="fa fa-trash-o fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
                     <div class="proj_name">New TODO list</div>
@@ -24,8 +24,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="proj_edit"  style="display: none">
                 <div class="proj_btns">
-                    <div class="btn_ok">ok</div>
-                    <div class="btn_cancel">cancel</div>
+                    <div class="btn_ok"><i class="fa fa-check fa-lg"></i></div>
+                    <div class="btn_cancel"><i class="fa fa-close fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
                     <form class="proj_edit">
@@ -37,11 +37,11 @@
     <!---------------------------------------------------------------------------------------->
             <div class="proj_del" style="display: none">
                  <div class="proj_btns">
-                    <div class="btn_ok">ok</div>
-                    <div class="btn_cancel">cancel</div>
+                    <div class="btn_ok"><i class="fa fa-check fa-lg"></i></div>
+                    <div class="btn_cancel"><i class="fa fa-close fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
-                    <span class="delete_question"><strong>Delete?</strong></span>
+                    <span class="delete_question"><strong>Delete? </strong></span>
                     <span class="proj_name">New TODO list</span>
                     <form class="proj_del">
                         <input type="hidden" name="id" value=""/>
@@ -74,8 +74,8 @@
             <div class="task_index">
                 <div class="task_btns">
                     <div class="btns_priority">
-                        <div class="btn_prior_up">up</div>
-                        <div class="btn_prior_down">down</div>
+                        <div class="btn_prior_up"><i class="fa fa-sort-up"></i></div>
+                        <div class="btn_prior_down"><i class="fa fa-sort-down"></i></div>
                         <form class="task_prior_up" method="POST">
                             <input type="hidden" name="id_1" value=""/>
                             <input type="hidden" name="id_2" value=""/>
@@ -85,11 +85,11 @@
                             <input type="hidden" name="id_2" value=""/>
                         </form>
                     </div>
-                    <div class="btn_task_edit">edit</div>
-                    <div class="btn_task_del">del</div>
+                    <div class="btn_task_edit"><i class="fa fa-pencil"></i></div>
+                    <div class="btn_task_del"><i class="fa fa-trash-o"></i></div>
                 </div>
                 <div class="task_status">
-                    <form class="task_status">
+                    <form class="task_status" method="POST">
                         <input type="checkbox" name="status" value="1"/>
                         <input type="hidden" name="id" value=""/>
                     </form>
@@ -102,8 +102,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="task_edit" style="display: none">
                 <div class="task_btns">
-                    <div class="btn_ok">ok</div>
-                    <div class="btn_cancel">cancel</div>
+                    <div class="btn_ok"><i class="fa fa-check"></i></div>
+                    <div class="btn_cancel"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="task_status"></div>
                 <div class="empty_div"></div>
@@ -117,14 +117,14 @@
     <!---------------------------------------------------------------------------------------->
             <div class="task_del" style="display: none">
                 <div class="task_btns">
-                    <div class="btn_ok">ok</div>
-                    <div class="btn_cancel">cancel</div>
+                    <div class="btn_ok"><i class="fa fa-check"></i></div>
+                    <div class="btn_cancel"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="task_status"></div>
                 <div class="empty_div"></div>
                 <div class="task_text">
-                    <div class="delete_question">Delete?</div>
-                    <div class="task_name">New Task</div>
+                    <span class="delete_question">Delete? </span>
+                    <span class="task_name">New Task</span>
                     <form class="task_del">
                         <input type="hidden" name="id" value=""/>
                     </form>
@@ -142,8 +142,8 @@
 
 <form class="proj_create" method="POST">
     <input type="hidden" name="name" value="New TODO List"/>
-    <button type="submit">
-        <span class="create_ico"></span>
-        Add TODO List
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-plus fa-2x"></i> 
+        <span>Add TODO List</span>
     </button>
 </form>

@@ -1,4 +1,6 @@
-
+//-----------------------------------------------------------------------
+//---- User Actions -----------------------------------------------------
+//-----------------------------------------------------------------------
 function actionRegistration(data){
     data = JSON.parse(data);
     if(+data['ok']){
@@ -44,7 +46,9 @@ function actionInsertLogin(data){
         $('.user_login').html(data['data']['login']);
     }
 }
-
+//-----------------------------------------------------------------------
+//---- Project Actions --------------------------------------------------
+//-----------------------------------------------------------------------
 function actionShowProjects(data){
     data = getData(data);
     if(+data['ok'] && data['data'].length>0){
@@ -86,7 +90,9 @@ function actionProjectCreate(data){
         project.render();
     }
 }
-
+//-----------------------------------------------------------------------
+//---- Task Actions -----------------------------------------------------
+//-----------------------------------------------------------------------
 function actionShowTasks(data){
     data = getData(data);
     if(+data['ok'] && data['data'].length>0){
@@ -97,5 +103,83 @@ function actionShowTasks(data){
             projects[index].tasks[i].init();
             projects[index].tasks[i].render();
         }
+    }
+}
+
+function actionTaskCreate(data){
+    data = getData(data);
+    if(+data['ok']){
+        var index = getIndexById(data['data']['project_id'], projects);
+        var task = new Task(data['data']['id'], data['data']['name'], data['data']['status'],
+                            data['data']['priority'], data['data']['deadline'], projects[index]);
+        projects[index].tasks.unshift(task);
+        task.init();
+        task.render();
+        task.div.insertBefore(projects[index].tasks[1].div);
+    }
+}
+
+function actionTaskEdit(data){
+    data = getData(data);
+    if(+data['ok']){
+        var i_p = getIndexById(data['data']['project_id'], projects);
+        var i_t = getIndexById(data['data']['id'], projects[i_p].tasks);
+        var task = projects[i_p].tasks[i_t];
+        task.name = data['data']['name'];
+        task.render();
+        $("div.task_index", task.div.get(0)).css({display: 'block'});
+        $("div.task_edit", task.div.get(0)).css({display: 'none'});
+    }
+}
+
+function actionTaskDelete(data){
+    data = getData(data);
+    if(+data['ok']){
+        var i_p = getIndexById(data['data']['project_id'], projects);
+        var i_t = getIndexById(data['data']['id'], projects[i_p].tasks);
+        projects[i_p].tasks.splice(i_t,1);
+        $("[data-task_id='"+data['data']['id']+"']").remove();
+    }
+}
+
+function actionTaskUpPriority(data){
+    data = getData(data);
+    if(+data['ok']){
+        var i_proj = getIndexById(data['data']['task_1']['project_id'], projects);
+        var i_task_1 = getIndexById(data['data']['task_1']['id'], projects[i_proj].tasks);
+        var i_task_2 = getIndexById(data['data']['task_2']['id'], projects[i_proj].tasks);
+        var task_1 = projects[i_proj].tasks[i_task_1];
+        var task_2 = projects[i_proj].tasks[i_task_2];
+        task_1.priority = data['data']['task_1']['priority'];
+        task_2.priority = data['data']['task_2']['priority'];
+        task_1.div.after(task_2.div);
+        projects[i_proj].tasks[i_task_1] = task_2;
+        projects[i_proj].tasks[i_task_2] = task_1;
+    }
+}
+
+function actionTaskDownPriority(data){
+    data = getData(data);
+    if(+data['ok']){
+        var i_proj = getIndexById(data['data']['task_1']['project_id'], projects);
+        var i_task_1 = getIndexById(data['data']['task_1']['id'], projects[i_proj].tasks);
+        var i_task_2 = getIndexById(data['data']['task_2']['id'], projects[i_proj].tasks);
+        var task_1 = projects[i_proj].tasks[i_task_1];
+        var task_2 = projects[i_proj].tasks[i_task_2];
+        task_1.priority = data['data']['task_1']['priority'];
+        task_2.priority = data['data']['task_2']['priority'];
+        task_2.div.after(task_1.div);
+        projects[i_proj].tasks[i_task_1] = task_2;
+        projects[i_proj].tasks[i_task_2] = task_1;
+    }
+}
+
+function actionTaskStatus(data){
+    data = getData(data);
+    if(+data['ok']){
+        var i_p = getIndexById(data['data']['project_id'], projects);
+        var i_t = getIndexById(data['data']['id'], projects[i_p].tasks);
+        projects[i_p].tasks[i_t].status = data['data']['status'];
+        projects[i_p].tasks[i_t].render();
     }
 }

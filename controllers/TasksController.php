@@ -136,8 +136,10 @@ class TasksController {
         }
         
         if($id){
+            $task = TasksModel::getById($id);
             if(TasksModel::deleteById($id)){
                 $this->answer['ok'] = 1;
+                $this->answer['data'] = $task;
                 $this->answer['msg'][] = "task was deleted";
             }else{
                 $this->answer['msg'][] = "task wasn't deleted";
@@ -196,6 +198,8 @@ class TasksController {
         if($id_1 && $id_2){
             if(TasksModel::exchangePriority($id_1, $id_2)){
                 $this->answer['ok'] = 1;
+                $this->answer['data']['task_1'] = TasksModel::getById($id_1);
+                $this->answer['data']['task_2'] = TasksModel::getById($id_2);
                 $this->answer['msg'][] = "priority was changed";
             }else{
                 $this->answer['msg'][] = "priority wasn't changed";
@@ -223,6 +227,7 @@ class TasksController {
         if($id){
             if(TasksModel::changeStatus($id, $status)){
                 $this->answer['ok'] = 1;
+                $this->answer['data'] = TasksModel::getById($id);
                 $this->answer['msg'][] = "status was changed";
             }else{
                 $this->answer['msg'][] = "status wasn't changed";

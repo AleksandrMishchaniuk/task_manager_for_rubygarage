@@ -43,6 +43,12 @@ function Project(id, name, proj_arr){
             $("div.proj_edit", curent.div.get(0)).css({display: 'none'});
             $("form.proj_edit [name='name']", curent.div.get(0)).val(curent.name);
         });
+        
+        $("form.task_create", this.div.get(0)).submit(function(){
+            ajaxAction('taskCreate', '/tasks/create', this);
+            $("[name='name']", this).val('');
+            return false;
+        });
     };
     
     this.render = function(){
@@ -62,7 +68,9 @@ function Project(id, name, proj_arr){
         $("form.tasks", this.div.get(0)).submit();
     };
 }
-
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 function Task(id, name, status, priority, deadline, project){
     this.id = id;
     this.name = name;
@@ -79,10 +87,19 @@ function Task(id, name, status, priority, deadline, project){
         this.div.css({display: 'block'});
         this.div.attr('data-task_id', this.id);
         
+        $("form.task_edit", this.div.get(0)).submit(function(){
+            ajaxAction('taskEdit', '/tasks/update', this);
+            return false;
+        });
+        $("form.task_del", this.div.get(0)).submit(function(){
+            ajaxAction('taskDelete', '/tasks/delete', this);
+            return false;
+        });
         $("form.task_prior_up", this.div.get(0)).submit(function(){
             var index = getIndexById(curent.id, curent.project.tasks);
             try{
                 $("[name='id_2']", this).val(curent.project.tasks[index-1].id);
+                ajaxAction('taskUpPriority', '/tasks/priority', this);
             }catch(e){}
             return false;
         });
@@ -90,15 +107,47 @@ function Task(id, name, status, priority, deadline, project){
             var index = getIndexById(curent.id, curent.project.tasks);
             try{
                 $("[name='id_2']", this).val(curent.project.tasks[index+1].id);
+                ajaxAction('taskDownPriority', '/tasks/priority', this);
             }catch(e){}
             return false;
         });
+        $("form.task_status", this.div.get(0)).submit(function(){
+            ajaxAction('taskStatus', '/tasks/status', this);
+            return false;
+        });
         
+        
+        $(".btn_task_edit", this.div.get(0)).click(function(){
+            $("div.task_index", curent.div.get(0)).css({display: 'none'});
+            $("div.task_edit", curent.div.get(0)).css({display: 'block'});
+        });
+        $(".btn_task_del", this.div.get(0)).click(function(){
+            $("div.task_index", curent.div.get(0)).css({display: 'none'});
+            $("div.task_del", curent.div.get(0)).css({display: 'block'});
+        });
+        $("div.task_del .btn_ok", this.div.get(0)).click(function(){
+            $("form.task_del", curent.div.get(0)).submit();
+        });
+        $("div.task_edit .btn_ok", this.div.get(0)).click(function(){
+            $("form.task_edit", curent.div.get(0)).submit();
+        });
+        $("div.task_del .btn_cancel", this.div.get(0)).click(function(){
+            $("div.task_index", curent.div.get(0)).css({display: 'block'});
+            $("div.task_del", curent.div.get(0)).css({display: 'none'});
+        });
+        $("div.task_edit .btn_cancel", this.div.get(0)).click(function(){
+            $("div.task_index", curent.div.get(0)).css({display: 'block'});
+            $("div.task_edit", curent.div.get(0)).css({display: 'none'});
+            $("form.task_edit [name='name']", curent.div.get(0)).val(curent.name);
+        });
         $(".btn_prior_up", this.div.get(0)).click(function(){
             $("form.task_prior_up", curent.div.get(0)).submit();
         });
         $(".btn_prior_down", this.div.get(0)).click(function(){
             $("form.task_prior_down", curent.div.get(0)).submit();
+        });
+        $("form.task_status", this.div.get(0)).change(function(){
+            $(this).submit();
         });
     }
     
