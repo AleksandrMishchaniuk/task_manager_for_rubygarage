@@ -49,6 +49,13 @@ function Project(id, name, proj_arr){
             $("[name='name']", this).val('');
             return false;
         });
+        $('.proj_caption', this.div.get(0)).hover(
+            function(){
+                $('.proj_btns', $('.proj_index', this).get(0)).css('display', 'block');
+            }, 
+            function(){
+                $('.proj_btns', $('.proj_index', this).get(0)).css('display', 'none');
+        });
     };
     
     this.render = function(){
@@ -148,6 +155,13 @@ function Task(id, name, status, priority, deadline, project){
         });
         $("form.task_status", this.div.get(0)).change(function(){
             $(this).submit();
+        });
+        $('.task_index', this.div.get(0)).hover(
+            function(){
+                $('.task_btns', this).css('display', 'block');
+            }, 
+            function(){
+                $('.task_btns', this).css('display', 'none');
         });
     }
     

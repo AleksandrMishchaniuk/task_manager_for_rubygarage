@@ -1,19 +1,21 @@
 <script src="js/handlers.js"></script>
 <script src="js/constructors.js"></script>
 
-<h1>Hi, <span class="user_login"></span>!!!</h1>
-<a href="#" id="btn_logout" class="btn">Quit</a>
+<div id="header">
+    <h1>Hi, <span class="user_login"></span>!!!</h1>
+    <a href="#" id="btn_logout" class="btn">Quit</a>
+</div>
 
 <div id="tmp" class="project" style="display: none" data-proj_id="">
     <!---------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------->
     <div class="proj_caption">
-        <div class="proj_ico"></div>
+        <div class="proj_ico"><i class="fa fa-calendar fa-lg"></i></div>
         <div class="proj_panels">
     <!---------------------------------------------------------------------------------------->
             <div class="proj_index">
-                <div class="proj_btns">
+                <div class="proj_btns" style="display: none">
                     <div class="btn_proj_edit"><i class="fa fa-pencil fa-lg"></i></div>
                     <div class="btn_proj_del"><i class="fa fa-trash-o fa-lg"></i></div>
                 </div>
@@ -41,7 +43,7 @@
                     <div class="btn_cancel"><i class="fa fa-close fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
-                    <span class="delete_question"><strong>Delete? </strong></span>
+                    <span class="delete_question text-error"><strong>Delete? </strong></span>
                     <span class="proj_name">New TODO list</span>
                     <form class="proj_del">
                         <input type="hidden" name="id" value=""/>
@@ -55,32 +57,34 @@
     <!---------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------->
     <div class="task_create">
-        <div class="create_ico btn_cteate_task"></div>
         <form class="task_create" method="POST">
-            <input type="text" name="name" placeholder="Start typing here to cteate a task..."/>
+            <div class="create_ico btn_cteate_task"><i class="fa fa-plus fa-lg"></i></div>
+            <div class="input-append">
+                <input class="span2" type="text" name="name" placeholder="Start typing here to cteate a task..."/>
+                <button class="btn" type="submit">Add Task</button>
+            </div>
             <input type="hidden" name="proj_id" value=""/>
-            <button type="submit">Add Task</button>
         </form>
     </div>
     <!---------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------->
     <!---------------------------------------------------------------------------------------->
     <div class="tasks_list">
-        <form class="tasks" method="POST">
+        <form class="tasks" method="POST" style="display: none">
             <input type="hidden" name="proj_id" value=""/>
         </form>
         <div class="task" data-task_id="" style="display: none">
     <!---------------------------------------------------------------------------------------->
             <div class="task_index">
-                <div class="task_btns">
+                <div class="task_btns" style="display: none">
                     <div class="btns_priority">
-                        <div class="btn_prior_up"><i class="fa fa-sort-up"></i></div>
-                        <div class="btn_prior_down"><i class="fa fa-sort-down"></i></div>
-                        <form class="task_prior_up" method="POST">
+                        <div class="btn_prior_up" title="up priopity"><i class="fa fa-sort-up"></i></div>
+                        <div class="btn_prior_down" title="down priority"><i class="fa fa-sort-down"></i></div>
+                        <form class="task_prior_up" method="POST" style="display: none">
                             <input type="hidden" name="id_1" value=""/>
                             <input type="hidden" name="id_2" value=""/>
                         </form>
-                        <form class="task_prior_down" method="POST">
+                        <form class="task_prior_down" method="POST" style="display: none">
                             <input type="hidden" name="id_1" value=""/>
                             <input type="hidden" name="id_2" value=""/>
                         </form>
@@ -94,9 +98,9 @@
                         <input type="hidden" name="id" value=""/>
                     </form>
                 </div>
-                <div class="empty_div"></div>
+                <div class="task_deadline"></div>
                 <div class="task_text">
-                    <div class="task_name">New Task</div>
+                    <div class="task_name muted">New Task</div>
                 </div>
             </div>
     <!---------------------------------------------------------------------------------------->
@@ -106,7 +110,7 @@
                     <div class="btn_cancel"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="task_status"></div>
-                <div class="empty_div"></div>
+                <div class="task_deadline"></div>
                 <div class="task_text">
                     <form class="task_edit">
                         <input type="text" name="name" value=""/>
@@ -121,11 +125,11 @@
                     <div class="btn_cancel"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="task_status"></div>
-                <div class="empty_div"></div>
+                <div class="task_deadline"></div>
                 <div class="task_text">
-                    <span class="delete_question">Delete? </span>
-                    <span class="task_name">New Task</span>
-                    <form class="task_del">
+                    <span class="delete_question text-error">Delete? </span>
+                    <span class="task_name muted">New Task</span>
+                    <form class="task_del" style="display: none">
                         <input type="hidden" name="id" value=""/>
                     </form>
                 </div>
