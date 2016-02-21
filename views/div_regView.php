@@ -3,7 +3,7 @@
     <input type="email" name="email" placeholder="E-mail" required/><br/>
     <input type="password" name="pass1" placeholder="Password" required/><br/>
     <input type="password" name="pass2" placeholder="Password again" required/><br/>
-    <input type="submit" value="Registration"/>
+    <input type="submit" class="btn" value="Registration"/>
 </form>
 <a href="#" id="btn_to_login">Back to sing in</a>
 <div class="msg"></div>

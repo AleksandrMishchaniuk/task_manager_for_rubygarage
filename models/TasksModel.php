@@ -139,7 +139,7 @@ class TasksModel {
         $query = 'UPDATE `tasks` SET `deadline`=:deadline'.
                 ' WHERE `id`=:id';
         $stm = $db->prepare($query);
-        $stm->bindParam(':deadline', $deadline, PDO::PARAM_INT);
+        $stm->bindParam(':deadline', $deadline, PDO::PARAM_STR);
         $stm->bindParam(':id', $id, PDO::PARAM_INT);
         return $stm->execute();
     }

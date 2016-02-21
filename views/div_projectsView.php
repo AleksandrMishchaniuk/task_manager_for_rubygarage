@@ -92,13 +92,25 @@
                     <div class="btn_task_edit"><i class="fa fa-pencil"></i></div>
                     <div class="btn_task_del"><i class="fa fa-trash-o"></i></div>
                 </div>
+                <div class="task_deadline_value muted">
+                    <span>deadline</span>
+                    <input type="text" readonly/>
+                </div>
                 <div class="task_status">
                     <form class="task_status" method="POST">
                         <input type="checkbox" name="status" value="1"/>
                         <input type="hidden" name="id" value=""/>
                     </form>
                 </div>
-                <div class="task_deadline"></div>
+                <div class="task_deadline">
+                    <i class="fa fa-clock-o fa-lg" title="deadline"></i>
+                    <div class="popover_content" style="display: none">
+                        <form class="task_deadline" method="POST">
+                            <input type="text" class="deadline" name="deadline" placeholder="no deadline"/>
+                            <input type="hidden" name="id" value=""/>
+                        </form>
+                    </div>
+                </div>
                 <div class="task_text">
                     <div class="task_name muted">New Task</div>
                 </div>

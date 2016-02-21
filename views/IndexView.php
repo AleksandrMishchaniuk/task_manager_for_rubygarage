@@ -7,8 +7,10 @@
         <title>Notes.RubyGarage</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="/css/Font-Awesome-v4.5.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="js/jquery-ui-1.11.4.custom/jquery-ui.min.css"/>
         <link rel="stylesheet" href="/css/main-styles.css"/>
         <script src="/js/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
         <script src="/js/ajax.js"></script>
         <script src="/js/main-functions.js"></script>
         <script src="/js/actions.js"></script>

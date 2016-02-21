@@ -156,21 +156,22 @@ class TasksController {
      */
     public function actionSetDeadline(){
         $id = NULL;
-        $deadline = 0;
+        $deadline = NULL;
         
         if(isset($_POST['id'])){
             $id = intval($_POST['id']);
         }
         if(isset($_POST['deadline'])){
-            $deadline = intval($_POST['deadline']);
+            $deadline = $_POST['deadline'];
         }
         if(!$deadline){
-            $deadline = 0;
+            $deadline = NULL;
         }
         
         if($id){
             if(TasksModel::setDeadline($id, $deadline)){
                 $this->answer['ok'] = 1;
+                $this->answer['data'] = TasksModel::getById($id);
                 $this->answer['msg'][] = "deadline was changed";
             }else{
                 $this->answer['msg'][] = "deadline wasn't changed";

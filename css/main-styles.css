@@ -4,12 +4,31 @@ body{
 #header{
     text-align: center;
 }
+#btn_logout{
+    font-weight: bold;
+}
+#div_reg, #div_login{
+    text-align: center;
+    margin: 200px auto;
+}
+#div_reg [type='submit'], #div_login [type='submit']{
+    font-weight: bold;
+    /*font-size: 12pt;*/
+}
 /*------------------------------*/
 /*--- ICON ----------*/
 /*------------------------------*/
 .fa-plus, .fa-calendar{
     text-shadow: 0px 1.5px 1px gray, 0px -1px 1.5px black;
     vertical-align: middle;
+}
+.fa-clock-o{
+    vertical-align: bottom;
+    color: silver;
+    cursor: pointer;
+}
+.fa-clock-o:hover{
+    color: black;
 }
 
 /*------------------------------*/
@@ -93,7 +112,7 @@ div.task_create .input-append input{
 .task{
     background: white;
     min-height: 30px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     border-top: 1px solid silver;
     position: relative;
     font-weight: bold;
@@ -101,9 +120,6 @@ div.task_create .input-append input{
 .task:last-child{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-}
-.task:hover{
-    background: #FCFED5;
 }
 .task > div{
     height: 100%;
@@ -116,7 +132,7 @@ div.task_create .input-append input{
     padding: 10px;
     height: 100%;
 }
-.task > div > div:first-child{
+.task > div > div:first-child, .task > div > div:nth-child(2){
     border: none;
 }
 .task_status, .task_deadline{
@@ -130,12 +146,44 @@ div.task_create .input-append input{
 div.task_text{
     margin-left: 82px;
     margin-right: 102px;
+    word-wrap: break-word;
+}
+form.task_edit [name='name']{
+    width: 95%;
 }
 .task_index .task_name, .task_del .task_name, .task_del .delete_question{
     margin: 5px;
 }
 form.task_edit, form.task_del, form.task_status, form.task_edit>*{
     margin: 0;
+}
+div.task_deadline{
+    text-align: center;
+}
+form.task_deadline{
+    position: relative;
+    top: 10px;
+    z-index: 5;
+}
+div.task_deadline_value{
+    float: right;
+    text-align: center;
+}
+div.task_deadline_value input{
+    background: none;
+    border: 0;
+    box-shadow: none;
+    font-size: 10pt;
+    width: 80px;
+    margin: 7px 0 0 0;
+    padding: 0;
+}
+div.task_deadline_value span{
+    font-size: 7pt;
+    position: absolute;
+    top: 2px;
+    margin: 0;
+    padding: 0;
 }
 
 /*------------------------------*/

@@ -183,3 +183,13 @@ function actionTaskStatus(data){
         projects[i_p].tasks[i_t].render();
     }
 }
+
+function actionTaskDeadline(data){
+    data = getData(data);
+    if(+data['ok']){
+        var i_p = getIndexById(data['data']['project_id'], projects);
+        var i_t = getIndexById(data['data']['id'], projects[i_p].tasks);
+        projects[i_p].tasks[i_t].deadline = data['data']['deadline'];
+        projects[i_p].tasks[i_t].render();
+    }
+}

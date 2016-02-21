@@ -86,6 +86,7 @@ function Task(id, name, status, priority, deadline, project){
     this.deadline = deadline;
     this.project = project;
     this.div = {};
+    this.color = null;
     
     this.init = function(){
         var curent = this;
@@ -93,6 +94,13 @@ function Task(id, name, status, priority, deadline, project){
         $('.tasks_list', this.project.div.get(0)).append(this.div);
         this.div.css({display: 'block'});
         this.div.attr('data-task_id', this.id);
+        
+        $(".deadline", this.div.get(0)).datepicker({
+            dateFormat: "yy-mm-dd",
+            altField: "[data-task_id='"+this.id+"'] .task_deadline_value input",
+            altFormat: "yy-mm-dd",
+            minDate: 0
+        });
         
         $("form.task_edit", this.div.get(0)).submit(function(){
             ajaxAction('taskEdit', '/tasks/update', this);
@@ -120,6 +128,10 @@ function Task(id, name, status, priority, deadline, project){
         });
         $("form.task_status", this.div.get(0)).submit(function(){
             ajaxAction('taskStatus', '/tasks/status', this);
+            return false;
+        });
+        $("form.task_deadline", this.div.get(0)).submit(function(){
+            ajaxAction('taskDeadline', '/tasks/deadline', this);
             return false;
         });
         
@@ -156,26 +168,84 @@ function Task(id, name, status, priority, deadline, project){
         $("form.task_status", this.div.get(0)).change(function(){
             $(this).submit();
         });
+        $("form.task_deadline", this.div.get(0)).change(function(){
+            $(this).submit();
+        });
+        
+        this.div.hover(
+            function(){
+                $(this).css({background: '#FCFED5'});
+            },
+            function(){
+                $(this).css({background: curent.color});
+        });
         $('.task_index', this.div.get(0)).hover(
             function(){
                 $('.task_btns', this).css('display', 'block');
+                $('.task_deadline_value', this).css('display', 'none');
             }, 
             function(){
                 $('.task_btns', this).css('display', 'none');
+                $('.task_deadline_value', this).css('display', 'block');
         });
+        
+        $("div.task_deadline i", this.div.get(0)).click(function(){
+            if($(".popover_content", curent.div.get(0)).css('display') === 'none'){
+                $(".popover_content", curent.div.get(0)).css({display: 'block'});
+                $("form.task_deadline input[name='deadline']", curent.div.get(0)).focus();
+            }else{
+                $(".popover_content", curent.div.get(0)).css({display: 'none'});
+            }
+        });
+        $("form.task_deadline input[name='deadline']", curent.div.get(0)).blur(function(){
+            $(".popover_content", curent.div.get(0)).css({display: 'none'});
+        });
+        
     }
     
     this.render = function(){
+        var curent = this;
+        
+        if(!this.checkDeadline()){
+            this.color = '#FFDAB9';
+        }else{
+            this.color = 'white';
+        }
+        
+        this.div.css({background: this.color});
+        
         $('.task_name', this.div.get(0)).html(this.name);
         if(+this.status){
             $("form.task_status [name='status']", this.div.get(0)).attr('checked','checked');
         }
-        $("form.task_status [name='id']", this.div.get(0)).val(this.id);
+        $("[name='id']", this.div.get(0)).val(this.id);
         $("form.task_edit [name='name']", this.div.get(0)).attr('value',this.name);
-        $("form.task_edit [name='id']", this.div.get(0)).val(this.id);
-        $("form.task_del [name='id']", this.div.get(0)).val(this.id);
         
         $("form.task_prior_up [name='id_1']", this.div.get(0)).val(this.id);
         $("form.task_prior_down [name='id_1']", this.div.get(0)).val(this.id);
+        
+        $("form.task_deadline [name='deadline']", this.div.get(0)).val(this.deadline);
+        $("div.task_deadline_value input", this.div.get(0)).val(this.deadline);
+        
+        if(!$("div.task_deadline_value input", this.div.get(0)).val()){
+            $("div.task_deadline_value span", this.div.get(0)).css({display:'none'});
+        }else{
+            $("div.task_deadline_value span", this.div.get(0)).css({display:'inline'});
+        }
+        
+        $("[data-task_id='"+this.id+"']>div>div")
+                .css({'height':this.div.css('height')
+        });
     };
+    
+    this.checkDeadline = function(){
+        if(this.deadline){
+            var deadline = new Date(this.deadline).getTime();
+            var now = new Date().getTime();
+            if(deadline+(1000*3600*24) < now){
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -1,7 +1,7 @@
 <form id="form_login" method="POST">
     <input type="text" name="login" placeholder="Login" required/><br/>
     <input type="password" name="pass" placeholder="Password" required/><br/>
-    <input type="submit" value="Sing In"/>
+    <input type="submit" class="btn" value="Sing In"/>
 </form>
 <a href="#" id="btn_to_reg">Registration</a>
 <div class="msg"></div>
