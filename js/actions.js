@@ -28,7 +28,7 @@ function actionLogin(data){
         $('#form_login [type=password]').each(function(){
            $(this).val(''); 
         });
-        msgShow('#div_login .msg', data['msg']);
+        msgShow('#div_login .msg', data['msg'], 10000);
     }
 }
 
@@ -43,7 +43,7 @@ function actionLogout(data){
 function actionInsertLogin(data){
     data = getData(data);
     if(+data['ok']){
-        $('.user_login').html(data['data']['login']);
+        $('.user_login').html(ucfirst(data['data']['login']));
     }
 }
 //-----------------------------------------------------------------------
@@ -88,6 +88,11 @@ function actionProjectCreate(data){
         projects.push(project);
         project.init();
         project.render();
+        $('.btn_proj_edit', project.div.get(0)).click();
+        $('form.proj_edit [name="name"]', project.div.get(0))
+                .val('')
+                .attr({placeholder: 'TODO list name'})
+                .focus();
     }
 }
 //-----------------------------------------------------------------------

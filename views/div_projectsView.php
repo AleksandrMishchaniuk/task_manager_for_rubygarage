@@ -16,8 +16,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="proj_index">
                 <div class="proj_btns" style="display: none">
-                    <div class="btn_proj_edit"><i class="fa fa-pencil fa-lg"></i></div>
-                    <div class="btn_proj_del"><i class="fa fa-trash-o fa-lg"></i></div>
+                    <div class="btn_proj_edit" title="Edit"><i class="fa fa-pencil fa-lg"></i></div>
+                    <div class="btn_proj_del" title="Delete"><i class="fa fa-trash-o fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
                     <div class="proj_name">New TODO list</div>
@@ -26,8 +26,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="proj_edit"  style="display: none">
                 <div class="proj_btns">
-                    <div class="btn_ok"><i class="fa fa-check fa-lg"></i></div>
-                    <div class="btn_cancel"><i class="fa fa-close fa-lg"></i></div>
+                    <div class="btn_ok" title="Ok"><i class="fa fa-check fa-lg"></i></div>
+                    <div class="btn_cancel" title="Cancel"><i class="fa fa-close fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
                     <form class="proj_edit">
@@ -39,8 +39,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="proj_del" style="display: none">
                  <div class="proj_btns">
-                    <div class="btn_ok"><i class="fa fa-check fa-lg"></i></div>
-                    <div class="btn_cancel"><i class="fa fa-close fa-lg"></i></div>
+                    <div class="btn_ok" title="Ok"><i class="fa fa-check fa-lg"></i></div>
+                    <div class="btn_cancel" title="Cancel"><i class="fa fa-close fa-lg"></i></div>
                 </div>
                 <div class="proj_text">
                     <span class="delete_question text-error"><strong>Delete? </strong></span>
@@ -78,8 +78,8 @@
             <div class="task_index">
                 <div class="task_btns" style="display: none">
                     <div class="btns_priority">
-                        <div class="btn_prior_up" title="up priopity"><i class="fa fa-sort-up"></i></div>
-                        <div class="btn_prior_down" title="down priority"><i class="fa fa-sort-down"></i></div>
+                        <div class="btn_prior_up" title="Up priopity"><i class="fa fa-sort-up"></i></div>
+                        <div class="btn_prior_down" title="Down priority"><i class="fa fa-sort-down"></i></div>
                         <form class="task_prior_up" method="POST" style="display: none">
                             <input type="hidden" name="id_1" value=""/>
                             <input type="hidden" name="id_2" value=""/>
@@ -89,8 +89,8 @@
                             <input type="hidden" name="id_2" value=""/>
                         </form>
                     </div>
-                    <div class="btn_task_edit"><i class="fa fa-pencil"></i></div>
-                    <div class="btn_task_del"><i class="fa fa-trash-o"></i></div>
+                    <div class="btn_task_edit" title="Edit"><i class="fa fa-pencil"></i></div>
+                    <div class="btn_task_del" title="Delete"><i class="fa fa-trash-o"></i></div>
                 </div>
                 <div class="task_deadline_value muted">
                     <span>deadline</span>
@@ -98,12 +98,12 @@
                 </div>
                 <div class="task_status">
                     <form class="task_status" method="POST">
-                        <input type="checkbox" name="status" value="1"/>
+                        <input type="checkbox" name="status" value="1" title="Status"/>
                         <input type="hidden" name="id" value=""/>
                     </form>
                 </div>
                 <div class="task_deadline">
-                    <i class="fa fa-clock-o fa-lg" title="deadline"></i>
+                    <i class="fa fa-clock-o fa-lg" title="Deadline"></i>
                     <div class="popover_content" style="display: none">
                         <form class="task_deadline" method="POST">
                             <input type="text" class="deadline" name="deadline" placeholder="no deadline"/>
@@ -118,8 +118,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="task_edit" style="display: none">
                 <div class="task_btns">
-                    <div class="btn_ok"><i class="fa fa-check"></i></div>
-                    <div class="btn_cancel"><i class="fa fa-close"></i></div>
+                    <div class="btn_ok" title="Ok"><i class="fa fa-check"></i></div>
+                    <div class="btn_cancel" title="Cancel"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="task_status"></div>
                 <div class="task_deadline"></div>
@@ -133,8 +133,8 @@
     <!---------------------------------------------------------------------------------------->
             <div class="task_del" style="display: none">
                 <div class="task_btns">
-                    <div class="btn_ok"><i class="fa fa-check"></i></div>
-                    <div class="btn_cancel"><i class="fa fa-close"></i></div>
+                    <div class="btn_ok" title="Ok"><i class="fa fa-check"></i></div>
+                    <div class="btn_cancel" title="Cancel"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="task_status"></div>
                 <div class="task_deadline"></div>

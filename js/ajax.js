@@ -15,9 +15,9 @@ function ajaxAction(action_name, path, obj){
     }
     $.post(path, params, 
             function(data){
-                var first_later = action_name[0].toUpperCase();
-                action_name = first_later + action_name.slice(1);
-                var action = 'action'+action_name;
+//                var first_later = action_name[0].toUpperCase();
+//                action_name = first_later + action_name.slice(1);
+                var action = 'action'+ucfirst(action_name);
                 new Function(action+'(\''+data+'\')')();
             }); 
 }

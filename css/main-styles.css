@@ -1,8 +1,11 @@
 body{
-    background: burlywood;
+    background-image: url('../images/background_2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
 }
 #header{
     text-align: center;
+    margin: 30px;
 }
 #btn_logout{
     font-weight: bold;
@@ -13,7 +16,10 @@ body{
 }
 #div_reg [type='submit'], #div_login [type='submit']{
     font-weight: bold;
-    /*font-size: 12pt;*/
+}
+.msg{
+    margin: 10px;
+    font-weight: bold;
 }
 /*------------------------------*/
 /*--- ICON ----------*/
@@ -37,7 +43,6 @@ body{
 .project{
     background: white;
     max-width: 650px;
-    border: 1px solid silver;
     border-radius: 15px;
     margin: 20px auto;
 }
@@ -58,10 +63,17 @@ body{
 }
 .proj_caption .proj_text, .proj_caption input{
     font-size: 14pt;
-    margin: 0;
 }
 .proj_caption form{
     margin: 0;
+}
+form.proj_edit [name='name']{
+    width: 95%;
+}
+div.proj_text{
+    margin-left: 60px;
+    margin-right: 80px;
+    word-wrap: break-word;
 }
 
 /*------------------------------*/
@@ -112,7 +124,6 @@ div.task_create .input-append input{
 .task{
     background: white;
     min-height: 30px;
-    /*overflow: hidden;*/
     border-top: 1px solid silver;
     position: relative;
     font-weight: bold;
@@ -246,6 +257,7 @@ div.task_index .task_btns>div{
 /*------------------------------*/
 form.proj_create{
     text-align: center;
+    margin: 30px;
 }
 form.proj_create > button{
     background: linear-gradient(to top, #3861A0, #4A81BB);
