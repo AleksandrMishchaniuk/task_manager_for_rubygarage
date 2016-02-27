@@ -1,3 +1,8 @@
+<div class="test_values">
+    +++ For Testing +++<br/>
+    Login: tester<br/>
+    Password: test
+</div>
 <form id="form_login" method="POST">
     <input type="text" name="login" placeholder="Login" required/><br/>
     <input type="password" name="pass" placeholder="Password" required/><br/>

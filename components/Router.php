@@ -2,7 +2,8 @@
 
 
 /**
- * Description of Router
+ * Router
+ * For navigate on backend side
  *
  * @author Oleksandr
  */
@@ -10,6 +11,9 @@ class Router {
     
     private $routes;
     
+    /**
+     * gets routs aray
+     */
     public function __construct(){
         $this->routes = include(ROOT.'/config/routes.php');
     }
@@ -26,7 +30,8 @@ class Router {
     }
     
     /**
-     * 
+     * Parse request string on controller name, action name and parameters
+     * Create controller object and runs its action with parameters
      */
     public function run() {
         $uri = $this->getURI();
@@ -46,10 +51,10 @@ class Router {
                     $obj = new $controller_name;
                     $result = call_user_func_array(array($obj, $action_name), $parts);
                     if(!$result){
-                        exit('Просим прощение за технические неисправности');
+                        exit();
                     }
                 }else{
-                    exit('Просим прощение за технические неисправности');
+                    exit();
                 }
                 exit();
             }

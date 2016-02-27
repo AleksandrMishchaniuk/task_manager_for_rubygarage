@@ -40,6 +40,12 @@ function actionLogout(data){
     }
 }
 
+/**
+ * Insert user login to header
+ * 
+ * @param {json-string} data
+ * @returns {undefined}
+ */
 function actionInsertLogin(data){
     data = getData(data);
     if(+data['ok']){

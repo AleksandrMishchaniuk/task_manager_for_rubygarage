@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Description of UserModel
+ * UserModel
  *
  * @author Oleksandr
  */
 class UserModel {
     
     /**
+     * Returns user id by his login
      * 
-     * @param type $log
-     * @param type $pass
-     * @return boolean
+     * @param string $log (login)
+     * @return boolean | integer (id by login)
      */
     public static function getIdByLogin($log){
         $db = dbConection::get();
@@ -21,11 +21,17 @@ class UserModel {
         $sth->bindParam(':log', $log, PDO::PARAM_STR, 100);
         $sth->execute();
         if($row = $sth->fetch(PDO::FETCH_ASSOC)){
-            return $row['id'];
+            return intval($row['id']);
         }
         return FALSE;
     }
     
+    /**
+     * Returns user login by his id
+     * 
+     * @param integer $id
+     * @return boolean | string (user login)
+     */
     public static function getLoginById($id){
         $db = dbConection::get();
         $query = "SELECT `login` FROM `users`".
@@ -40,9 +46,10 @@ class UserModel {
     }
     
     /**
+     * Returns user password by his login
      * 
-     * @param type $log
-     * @return boolean
+     * @param string $log
+     * @return boolean | string (user password)
      */
     public static function getPasswordByLogin($log){
         $db = dbConection::get();
@@ -59,11 +66,12 @@ class UserModel {
     
     
     /**
+     * Adds new user
      * 
-     * @param type $log
-     * @param type $email
-     * @param type $pass
-     * @return type
+     * @param string $log (login)
+     * @param string $email (e-mail)
+     * @param string $pass (password)
+     * @return boolean
      */
     public static function registration($log, $email, $pass){
         $db = dbConection::get();
@@ -77,8 +85,9 @@ class UserModel {
     }
     
     /**
+     * Checks if exist user with this login
      * 
-     * @param type $log
+     * @param string $log (login)
      * @return boolean
      */
     public static function checkLogin($log){
@@ -95,8 +104,9 @@ class UserModel {
     }
     
     /**
+     * Checks if exist user with this e-mail
      * 
-     * @param type $email
+     * @param string $email (e-mail)
      * @return boolean
      */
     public static function checkEmail($email){
@@ -113,12 +123,13 @@ class UserModel {
     }
     
     /**
+     * Checks if user logged now
      * 
-     * @return boolean
+     * @return boolean | integer (user id from session)
      */
     public static function checkLogged(){
         if(isset($_SESSION['user'])){
-            return $_SESSION['user'];
+            return intval($_SESSION['user']);
         }
         return FALSE;
     }

@@ -14,7 +14,7 @@ class TasksController {
     private $answer;
     
     /**
-     * 
+     * Initialization array of answers and check if user logged
      */
     public function __construct() {
         $this->user_id = UserModel::checkLogged();
@@ -30,7 +30,7 @@ class TasksController {
     }
 
     /**
-     * 
+     * Sends all project tasks
      * @return boolean
      */
     public function actionIndex(){
@@ -50,7 +50,8 @@ class TasksController {
     }
     
     /**
-     * 
+     * Create new task
+     * Send this task
      * @return boolean
      */
     public function actionCreate(){
@@ -89,7 +90,8 @@ class TasksController {
     }
     
     /**
-     * 
+     * Update task
+     * Send this task
      * @return boolean
      */
     public function actionUpdate(){
@@ -125,7 +127,8 @@ class TasksController {
     }
     
     /**
-     * 
+     * Delete task
+     * Send this task
      * @return boolean
      */
     public function actionDelete(){
@@ -151,7 +154,8 @@ class TasksController {
     }
     
     /**
-     * 
+     * Set deadline for task
+     * Send this task
      * @return boolean
      */
     public function actionSetDeadline(){
@@ -182,7 +186,8 @@ class TasksController {
     }
     
     /**
-     * 
+     * Exchange priority for two tasks
+     * Send this tasks
      * @return boolean
      */
     public function actionExchangePriority(){
@@ -211,7 +216,8 @@ class TasksController {
     }
     
     /**
-     * 
+     * Set status for task
+     * Send this task
      * @return boolean
      */
     public function actionChangeStatus(){

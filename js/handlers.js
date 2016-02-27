@@ -1,3 +1,4 @@
+//Global variable
 var projects = [];
 
 $().ready(function(){

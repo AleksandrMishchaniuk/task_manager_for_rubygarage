@@ -10,7 +10,7 @@ include_once (ROOT.'/models/UserModel.php');
 class UserController {
     
     /**
-     * 
+     * Authorization of user
      * @return boolean
      */
     public function actionLogin(){
@@ -53,6 +53,10 @@ class UserController {
         return true;
     }
     
+    /**
+     * Sends login of logged user
+     * @return boolean
+     */
     public function actionGetLogin(){
         $user_id = UserModel::checkLogged();
         if(!$user_id){
@@ -72,7 +76,7 @@ class UserController {
     }
     
     /**
-     * 
+     * logout of user
      */
     public function actionLogout(){
         unset($_SESSION['user']);
@@ -81,7 +85,7 @@ class UserController {
     }
 
     /**
-     * 
+     * Registration of user
      * @return boolean
      */
     public function actionRegistration(){

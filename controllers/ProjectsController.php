@@ -4,7 +4,7 @@ include_once ROOT.'/models/UserModel.php';
 include_once ROOT.'/models/ProjectsModel.php';
 
 /**
- * Description of ProjectsController
+ * ProjectsController
  *
  * @author Oleksandr
  */
@@ -14,7 +14,7 @@ class ProjectsController {
     private $answer;
     
     /**
-     * 
+     * Initialization array of answers and check if user logged
      */
     public function __construct() {
         $this->user_id = UserModel::checkLogged();
@@ -30,7 +30,7 @@ class ProjectsController {
     }
     
     /**
-     * 
+     * Sends all user projects
      * @return boolean
      */
     public function actionIndex(){
@@ -47,7 +47,8 @@ class ProjectsController {
     
     
     /**
-     * 
+     * Create new project
+     * Send this project
      * @return boolean
      */
     public function actionCreate(){
@@ -81,7 +82,8 @@ class ProjectsController {
     
     
     /**
-     * 
+     * Update project
+     * Send this project
      * @return boolean
      */
     public function actionUpdate(){
@@ -118,7 +120,8 @@ class ProjectsController {
     
     
     /**
-     * 
+     * Delete project
+     * Send id of this project
      * @return boolean
      */
     public function actionDelete(){

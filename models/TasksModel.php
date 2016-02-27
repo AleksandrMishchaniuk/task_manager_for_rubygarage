@@ -2,16 +2,17 @@
 
 
 /**
- * Description of TasksModel
+ * TasksModel
  *
  * @author Oleksandr
  */
 class TasksModel {
     
     /**
+     * Returns all project tasks
      * 
-     * @param type $proj_id
-     * @return boolean
+     * @param integer $proj_id
+     * @return boolean | array (all project tasks)
      */
     public static function getAllByProjId($proj_id){
         $db = dbConection::get();
@@ -35,9 +36,10 @@ class TasksModel {
     }
     
     /**
+     * Returns last project task
      * 
-     * @param type $proj_id
-     * @return boolean
+     * @param integer $proj_id
+     * @return boolean | array (last project task)
      */
     public static function getLastByProjId($proj_id){
         $db = dbConection::get();
@@ -53,10 +55,11 @@ class TasksModel {
     }
     
     /**
+     * Adds new task
      * 
-     * @param type $name
-     * @param type $priority
-     * @param type $proj_id
+     * @param string $name (task name)
+     * @param integer $priority
+     * @param integer $proj_id
      * @return boolean
      */
     public static function create($name, $priority, $proj_id){
@@ -74,9 +77,10 @@ class TasksModel {
     }
     
     /**
+     * Returns task by its id
      * 
-     * @param type $id
-     * @return boolean
+     * @param integer $id
+     * @return boolean | array (task)
      */
     public static function getById($id){
         $db = dbConection::get();
@@ -91,9 +95,10 @@ class TasksModel {
     }
     
     /**
+     * Updates task by its id
      * 
-     * @param type $id
-     * @param type $name
+     * @param integer $id
+     * @param string $name
      * @return boolean
      */
     public static function updateById($id, $name){
@@ -110,8 +115,9 @@ class TasksModel {
     }
     
     /**
+     * Deletes task by its id
      * 
-     * @param type $id
+     * @param integer $id
      * @return boolean
      */
     public static function deleteById($id){
@@ -126,9 +132,10 @@ class TasksModel {
     }
     
     /**
+     * Sets deadline for task
      * 
-     * @param type $id
-     * @param type $deadline
+     * @param integer $id
+     * @param string $deadline
      * @return boolean
      */
     public static function setDeadline($id, $deadline){
@@ -145,9 +152,10 @@ class TasksModel {
     }
     
     /**
+     * Exchanges priority for two tasks
      * 
-     * @param type $id_1
-     * @param type $id_2
+     * @param integer $id_1
+     * @param integer $id_2
      * @return boolean
      */
     public static function exchangePriority($id_1, $id_2){
@@ -168,9 +176,10 @@ class TasksModel {
     }
     
     /**
+     * Changes task status
      * 
-     * @param type $id
-     * @param type $status
+     * @param integer $id
+     * @param integer $status
      * @return boolean
      */
     public static function changeStatus($id, $status){

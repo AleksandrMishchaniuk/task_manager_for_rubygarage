@@ -2,16 +2,17 @@
 
 
 /**
- * Description of ProjectsModel
+ * ProjectsModel
  *
  * @author Oleksandr
  */
 class ProjectsModel {
     
     /**
+     * Returns all user projects
      * 
-     * @param type $user_id
-     * @return boolean
+     * @param integer $user_id
+     * @return boolean | array (all user projects)
      */
     public static function getAllByUserId($user_id){
         $db = dbConection::get();
@@ -33,9 +34,10 @@ class ProjectsModel {
     }
     
     /**
+     * Returns last user project
      * 
-     * @param type $user_id
-     * @return boolean
+     * @param integer $user_id
+     * @return boolean | array (last user project)
      */
     public static function getLastByUserId($user_id){
         $db = dbConection::get();
@@ -51,9 +53,10 @@ class ProjectsModel {
     }
     
     /**
+     * Adds new project
      * 
-     * @param type $name
-     * @param type $user_id
+     * @param string $name (project name)
+     * @param integer $user_id
      * @return boolean
      */
     public static function create($name, $user_id){
@@ -70,9 +73,10 @@ class ProjectsModel {
     }
     
     /**
+     * Returns project by its id
      * 
-     * @param type $id
-     * @return boolean
+     * @param integer $id
+     * @return boolean | array (project)
      */
     public static function getById($id){
         $db = dbConection::get();
@@ -88,9 +92,10 @@ class ProjectsModel {
     }
     
     /**
+     * Updates project by its id
      * 
-     * @param type $id
-     * @param type $name
+     * @param integer $id
+     * @param string $name
      * @return boolean
      */
     public static function updateById($id, $name){
@@ -107,8 +112,9 @@ class ProjectsModel {
     }
     
     /**
+     * Deletes project by its id
      * 
-     * @param type $id
+     * @param integer $id
      * @return boolean
      */
     public static function deleteById($id){

@@ -2,12 +2,16 @@
 
 
 /**
- * Description of dbConection
+ * DataBase Connection
  *
  * @author Oleksandr
  */
 class dbConection {
     
+    /**
+     * Creates DataBase Conection
+     * @return \PDO (database connection object)
+     */
     public static function get(){
         $params = include (ROOT.'/config/db_params.php');
         
