@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Фев 27 2016 г., 08:41
+-- Время создания: Фев 27 2016 г., 20:00
 -- Версия сервера: 5.6.17
 -- Версия PHP: 5.5.12
 
@@ -20,16 +20,6 @@ SET time_zone = "+00:00";
 -- База данных: `ruby_notes`
 --
 
-DELIMITER $$
---
--- Процедуры
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_priority`(IN `id` INT, OUT `prior` INT)
-    NO SQL
-SELECT tasks.priority INTO prior FROM tasks WHERE tasks.id=id$$
-
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -42,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Дамп данных таблицы `projects`
@@ -67,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `project_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `project_id` (`project_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Дамп данных таблицы `tasks`
@@ -91,14 +81,14 @@ INSERT INTO `tasks` (`id`, `name`, `status`, `priority`, `deadline`, `project_id
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(100) NOT NULL,
+  `login` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `login_2` (`login`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `users`

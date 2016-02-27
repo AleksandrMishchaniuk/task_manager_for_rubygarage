@@ -163,12 +163,10 @@ class TasksModel {
         if(!$db){
             return FALSE;
         }
-        $query = 'SET @p1=0;'.
-                ' SET @p2=0;'.
-                ' CALL get_priority(:id_1, @p1);'.
-                ' CALL get_priority(:id_2, @p2);'.
-                ' UPDATE tasks SET priority=@p2 WHERE id=:id_1;'.
-                ' UPDATE tasks SET priority=@p1 WHERE id=:id_2;';
+        $query = "SET @p1=(SELECT tasks.priority FROM tasks WHERE tasks.id=:id_1);".
+                    "SET @p2=(SELECT tasks.priority FROM tasks WHERE tasks.id=:id_2);".
+                    "UPDATE tasks SET priority=@p2 WHERE id=:id_1;".
+                    "UPDATE tasks SET priority=@p1 WHERE id=:id_2;";
         $stm = $db->prepare($query);
         $stm->bindParam(':id_1', $id_1, PDO::PARAM_INT);
         $stm->bindParam(':id_2', $id_2, PDO::PARAM_INT);
