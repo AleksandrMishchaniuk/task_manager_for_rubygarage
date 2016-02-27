@@ -30,3 +30,26 @@ tasks and tasks with project_id=NULL
     SELECT projects.name AS project, COUNT(tasks.id) AS count_tasks
         FROM projects LEFT OUTER JOIN tasks ON projects.id=project_id
         WHERE projects.name LIKE BINARY '%_a_%' GROUP BY project;
+---------------------------------------------------------------------------------
+
+6. get the list of tasks with duplicate names. Order alphabetically
+
+	SELECT name FROM tasks GROUP BY name HAVING COUNT(id)>1 ORDER BY name ASC;
+---------------------------------------------------------------------------------
+	
+7. get the list of tasks having several exact matches of both name and status, from 
+the project ‘Garage’. Order by matches count
+
+	SELECT name FROM tasks
+		WHERE project_id = (SELECT id FROM projects WHERE name='Garage')
+		GROUP BY name, tasks.status HAVING COUNT(id)>1 ORDER BY COUNT(id) ASC;
+---------------------------------------------------------------------------------
+
+8. get the list of project names having more than 10 tasks in status ‘completed’. Order 
+by project_id
+
+	SELECT projects.name AS proj_name
+		FROM projects INNER JOIN tasks ON projects.id=project_id
+		WHERE tasks.status != 0 GROUP BY proj_name, tasks.status HAVING COUNT(tasks.id)>10
+		ORDER BY project_id ASC;
+		
